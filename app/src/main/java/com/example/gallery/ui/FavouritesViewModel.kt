@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /**
- * UI state for the Favorites screen.
+ * UI state for the Favourites screen.
  */
 data class FavouritesUiState(
     val favouriteImages: List<FavouriteImage> = emptyList(),
@@ -28,31 +28,31 @@ class FavouritesViewModel(
     val favouritesUiState = _favouritesUiState.asStateFlow()
 
     init {
-        getFavorites()
+        getFavourites()
     }
 
-    fun getFavorites(){
+    fun getFavourites(){
         viewModelScope.launch {
-            favouriteImagesRepository.getAllFavoritesStream().collect {
-                    favorites -> _favouritesUiState.value = FavouritesUiState(favorites)
+            favouriteImagesRepository.getAllFavouritesStream().collect {
+                    favourites -> _favouritesUiState.value = FavouritesUiState(favourites)
             }
         }
     }
 
-    fun selectFavoriteImage(galleryImage: FavouriteImage){
+    fun selectFavouriteImage(galleryImage: FavouriteImage){
         _favouritesUiState.value =
             _favouritesUiState.value.copy(selectedImage = galleryImage)
     }
 
-    fun unSelectFavoriteImage(){
+    fun unSelectFavouriteImage(){
         _favouritesUiState.value =
             _favouritesUiState.value.copy(selectedImage = null)
     }
 
-    fun removeFavorite(favoriteImage: FavouriteImage) {
+    fun removeFavourite(favouriteImage: FavouriteImage) {
         viewModelScope.launch {
-            favouriteImagesRepository.deleteFavoriteImage(favoriteImage)
-            unSelectFavoriteImage()
+            favouriteImagesRepository.deleteFavouriteImage(favouriteImage)
+            unSelectFavouriteImage()
         }
     }
 
@@ -60,9 +60,9 @@ class FavouritesViewModel(
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as GalleryImagesApplication)
-                val favoriteImagesRepository = application.container.favouriteImagesRepository
+                val favouriteImagesRepository = application.container.favouriteImagesRepository
                 FavouritesViewModel(
-                    favouriteImagesRepository = favoriteImagesRepository
+                    favouriteImagesRepository = favouriteImagesRepository
                 )
             }
         }

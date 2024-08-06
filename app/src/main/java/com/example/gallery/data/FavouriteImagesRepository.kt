@@ -4,8 +4,8 @@ import com.example.gallery.model.FavouriteImage
 import kotlinx.coroutines.flow.Flow
 
 interface FavouriteImagesRepository {
-    fun getAllFavoritesStream(): Flow<List<FavouriteImage>>
-    suspend fun insertFavoriteImage(favoriteImage: FavouriteImage)
-    suspend fun deleteFavoriteImage(favoriteImage: FavouriteImage)
-    fun getFavoriteIds(): Flow<List<Int>>
+    fun getAllFavouritesStream(): Flow<List<FavouriteImage>>
+    suspend fun insertFavouriteImage(favouriteImage: FavouriteImage)
+    suspend fun deleteFavouriteImage(favouriteImage: FavouriteImage)
+    fun getFavouriteIds(): Flow<List<Int>>
 }

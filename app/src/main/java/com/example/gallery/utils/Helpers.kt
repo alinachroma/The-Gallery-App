@@ -4,11 +4,11 @@ import com.example.gallery.R
 import com.example.gallery.model.GalleryImage
 
 /**
- * List of titles for the Gallery and Favorites tabs.
+ * List of titles for the Gallery and Favourites tabs.
  * Placed there to make the [GalleryApp.kt] easier to read.
  */
 val appTabs = listOf(
-    R.string.app_name, R.string.favorites
+    R.string.app_name, R.string.favourites
 )
 
 /**

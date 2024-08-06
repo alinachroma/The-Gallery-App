@@ -4,18 +4,18 @@ import com.example.gallery.model.FavouriteImage
 import kotlinx.coroutines.flow.Flow
 
 class OfflineFavouriteImagesRepository(
-    private val favoriteImagesDao: FavouriteImagesDao
+    private val favouriteImagesDao: FavouriteImagesDao
 ) : FavouriteImagesRepository {
-    override fun getAllFavoritesStream(): Flow<List<FavouriteImage>> =
-        favoriteImagesDao.getAllFavouriteImages()
+    override fun getAllFavouritesStream(): Flow<List<FavouriteImage>> =
+        favouriteImagesDao.getAllFavouriteImages()
 
-    override suspend fun insertFavoriteImage(favoriteImage: FavouriteImage) =
-        favoriteImagesDao.insert(favouriteImage = favoriteImage)
+    override suspend fun insertFavouriteImage(favouriteImage: FavouriteImage) =
+        favouriteImagesDao.insert(favouriteImage = favouriteImage)
 
-    override suspend fun deleteFavoriteImage(favoriteImage: FavouriteImage) {
-        favoriteImagesDao.delete(favouriteImage = favoriteImage)
+    override suspend fun deleteFavouriteImage(favouriteImage: FavouriteImage) {
+        favouriteImagesDao.delete(favouriteImage = favouriteImage)
     }
-    override fun getFavoriteIds(): Flow<List<Int>> {
-        return favoriteImagesDao.getAllFavouriteIds()
+    override fun getFavouriteIds(): Flow<List<Int>> {
+        return favouriteImagesDao.getAllFavouriteIds()
     }
 }

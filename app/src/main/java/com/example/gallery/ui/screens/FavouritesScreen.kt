@@ -37,7 +37,7 @@ fun FavouritesScreen(
     onRemoveFavouriteClick: (FavouriteImage) -> Unit,
     navigateToExpandedImage: (FavouriteImage) -> Unit = { },
     contentPadding: PaddingValues = PaddingValues(0.dp),
-    onDismissFavorite: () -> Unit
+    onDismissFavourite: () -> Unit
 ) {
     LazyColumn(
         modifier = modifier,
@@ -60,19 +60,19 @@ fun FavouritesScreen(
         }
     }
     if (favouritesUiState.selectedImage != null) {
-        FavoriteExtendedImage(
+        FavouriteExtendedImage(
             image = favouritesUiState.selectedImage,
-            onDismiss = onDismissFavorite,
-            onRemoveFavoriteClick = onRemoveFavouriteClick,
+            onDismiss = onDismissFavourite,
+            onRemoveFavouriteClick = onRemoveFavouriteClick,
         )
     }
 }
 
 @Composable
-fun FavoriteExtendedImage(
+fun FavouriteExtendedImage(
     image: FavouriteImage,
     onDismiss: () -> Unit,
-    onRemoveFavoriteClick: (FavouriteImage) -> Unit,
+    onRemoveFavouriteClick: (FavouriteImage) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -92,9 +92,9 @@ fun FavoriteExtendedImage(
             modifier = modifier.fillMaxSize()
         )
         FavouriteButton(
-            hasFavorite = true,
-            onFavoriteClick = {
-                onRemoveFavoriteClick(image)
+            hasFavourite = true,
+            onFavouriteClick = {
+                onRemoveFavouriteClick(image)
             },
         )
     }
@@ -102,7 +102,7 @@ fun FavoriteExtendedImage(
 
 @ThemePreviews
 @Composable
-fun FavoriteImagesScreenPreview() {
+fun FavouriteImagesScreenPreview() {
     GalleryTheme {
         FavouritesScreen(
             favouritesUiState = FavouritesUiState(
@@ -111,7 +111,7 @@ fun FavoriteImagesScreenPreview() {
             ),
             onRemoveFavouriteClick = {},
             navigateToExpandedImage = {},
-            onDismissFavorite = {}
+            onDismissFavourite = {}
         )
     }
 }

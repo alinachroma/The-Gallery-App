@@ -19,15 +19,15 @@ import com.example.gallery.utils.ThemePreviews
 @Composable
 fun FavouriteButton(
     modifier: Modifier = Modifier,
-    hasFavorite: Boolean,
-    onFavoriteClick: (Boolean) -> Unit,
+    hasFavourite: Boolean,
+    onFavouriteClick: (Boolean) -> Unit,
 ) {
-    var isFavorite by remember { mutableStateOf(hasFavorite) }
+    var isFavourite by remember { mutableStateOf(hasFavourite) }
     IconToggleButton(
-        checked = isFavorite,
+        checked = isFavourite,
         onCheckedChange = {
-            isFavorite = !isFavorite
-            onFavoriteClick(isFavorite)
+            isFavourite = !isFavourite
+            onFavouriteClick(isFavourite)
         }
     ) {
         Icon(
@@ -36,7 +36,7 @@ fun FavouriteButton(
                 scaleX = 1.7f
                 scaleY = 1.7f
             },
-            imageVector = if (isFavorite) {
+            imageVector = if (isFavourite) {
                 Icons.Filled.Favorite
             } else {
                 Icons.Default.FavoriteBorder
@@ -51,8 +51,8 @@ fun FavouriteButton(
 fun FavouriteButtonPreview() {
     GalleryTheme {
         FavouriteButton(
-            onFavoriteClick = {},
-            hasFavorite = true
+            onFavouriteClick = {},
+            hasFavourite = true
         )
     }
 }

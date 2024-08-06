@@ -9,10 +9,10 @@ data class GalleryImage (
     val title: String,
     val url: String,
     val thumbnailUrl: String,
-    var isFavorite: Boolean = false
+    var isFavourite: Boolean = false
 ) {
     /**
-     * Extension function to convert GalleryImage to FavoriteImage.
+     * Extension function to convert GalleryImage to FavouriteImage.
      */
     fun toFavouriteImage(): FavouriteImage = FavouriteImage(
         id = id,

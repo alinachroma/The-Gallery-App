@@ -67,7 +67,7 @@ fun ResultScreen(
 fun GalleryExtendedImage(
     image: GalleryImage,
     onDismiss: () -> Unit,
-    onfavoriteClick: (GalleryImage, Boolean) -> Unit,
+    onfavouriteClick: (GalleryImage, Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -87,9 +87,9 @@ fun GalleryExtendedImage(
             modifier = modifier.fillMaxSize()
         )
         FavouriteButton(
-            hasFavorite = image.isFavorite,
-            onFavoriteClick = {
-                onfavoriteClick(image, it)
+            hasFavourite = image.isFavourite,
+            onFavouriteClick = {
+                onfavouriteClick(image, it)
             }
         )
     }
@@ -129,7 +129,7 @@ fun ExtendedImagePreview() {
         GalleryExtendedImage(
             image = mockGallery[0],
             onDismiss = {},
-            onfavoriteClick = { image, isfavorite -> }
+            onfavouriteClick = { image, isFavourite -> }
         )
     }
 }

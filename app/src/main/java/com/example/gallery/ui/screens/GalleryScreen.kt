@@ -15,7 +15,7 @@ import com.example.gallery.ui.GalleryUiState
 fun GalleryScreen(
     modifier: Modifier = Modifier,
     galleryUiState: GalleryUiState,
-    onFavoriteClick: (GalleryImage, Boolean) -> Unit,
+    onFavouriteClick: (GalleryImage, Boolean) -> Unit,
     retryAction: () -> Unit,
 ) {
     var selectedImageId by rememberSaveable {
@@ -33,7 +33,7 @@ fun GalleryScreen(
                 GalleryExtendedImage(
                     image = galleryUiState.images.first { it.id == selectedImageId },
                     onDismiss = { selectedImageId = null },
-                    onfavoriteClick = onFavoriteClick,
+                    onfavouriteClick = onFavouriteClick,
                 )
             }
         }

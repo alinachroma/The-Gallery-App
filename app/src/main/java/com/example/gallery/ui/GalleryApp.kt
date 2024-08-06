@@ -31,10 +31,10 @@ fun GalleryApp(
 ) {
     val galleryViewModel: GalleryViewModel =
         viewModel(factory = GalleryViewModel.Factory)
-    val favoritesViewModel: FavouritesViewModel =
+    val favouritesViewModel: FavouritesViewModel =
         viewModel(factory = FavouritesViewModel.Factory)
     val galleryUiState by galleryViewModel.galleryUiState.collectAsState()
-    val favoritesUiState by favoritesViewModel.favouritesUiState.collectAsState()
+    val favouritesUiState by favouritesViewModel.favouritesUiState.collectAsState()
 
     Scaffold(
         topBar = { GalleryTopAppBar() },
@@ -49,11 +49,11 @@ fun GalleryApp(
                         ) {
                             GalleryScreen(
                                 galleryUiState = galleryUiState,
-                                onFavoriteClick = { galleryImage, isFavorite ->
-                                    if (isFavorite) {
-                                        galleryViewModel.addFavorite(galleryImage)
+                                onFavouriteClick = { galleryImage, isFavourite ->
+                                    if (isFavourite) {
+                                        galleryViewModel.addFavourite(galleryImage)
                                     } else {
-                                        galleryViewModel.removeFavorite(galleryImage)
+                                        galleryViewModel.removeFavourite(galleryImage)
                                     }
                                 },
                                 retryAction = galleryViewModel::getGalleryImages
@@ -65,11 +65,11 @@ fun GalleryApp(
                             modifier = modifier.fillMaxSize()
                         ) {
                             FavouritesScreen(
-                                favouritesUiState = favoritesUiState,
-                                onRemoveFavouriteClick = { favoritesViewModel.removeFavorite(it) },
-                                navigateToExpandedImage = { favoritesViewModel.selectFavoriteImage(it) },
-                                onDismissFavorite = {
-                                    favoritesViewModel.unSelectFavoriteImage()
+                                favouritesUiState = favouritesUiState,
+                                onRemoveFavouriteClick = { favouritesViewModel.removeFavourite(it) },
+                                navigateToExpandedImage = { favouritesViewModel.selectFavouriteImage(it) },
+                                onDismissFavourite = {
+                                    favouritesViewModel.unSelectFavouriteImage()
                                 }
                             )
                         }

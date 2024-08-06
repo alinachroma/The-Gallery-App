@@ -28,7 +28,7 @@ sealed interface GalleryUiState {
 
 class GalleryViewModel(
     private val galleryImagesRepository: GalleryImagesRepository,
-    private val favoriteImagesRepository: FavouriteImagesRepository
+    private val favouriteImagesRepository: FavouriteImagesRepository
 ) : ViewModel() {
     private val _galleryUiState = MutableStateFlow<GalleryUiState>(GalleryUiState.Loading)
     val galleryUiState: StateFlow<GalleryUiState> = _galleryUiState.asStateFlow()
@@ -41,11 +41,11 @@ class GalleryViewModel(
         viewModelScope.launch {
             _galleryUiState.value = GalleryUiState.Loading
             try {
-                favoriteImagesRepository.getFavoriteIds().collect { favorites ->
+                favouriteImagesRepository.getFavouriteIds().collect { favourites ->
                     _galleryUiState.value =
                         GalleryUiState.Success(galleryImagesRepository.getImages()
                             .map { image ->
-                                image.isFavorite = favorites.contains(image.id)
+                                image.isFavourite = favourites.contains(image.id)
                                 image
                             }
                         )
@@ -58,17 +58,17 @@ class GalleryViewModel(
         }
     }
 
-    fun addFavorite(galleryImage: GalleryImage) {
+    fun addFavourite(galleryImage: GalleryImage) {
         viewModelScope.launch {
-            favoriteImagesRepository.insertFavoriteImage(
+            favouriteImagesRepository.insertFavouriteImage(
                 galleryImage.toFavouriteImage()
             )
         }
     }
 
-    fun removeFavorite(galleryImage: GalleryImage) {
+    fun removeFavourite(galleryImage: GalleryImage) {
         viewModelScope.launch {
-            favoriteImagesRepository.deleteFavoriteImage(
+            favouriteImagesRepository.deleteFavouriteImage(
                 galleryImage.toFavouriteImage()
             )
         }
@@ -79,10 +79,10 @@ class GalleryViewModel(
             initializer {
                 val application = (this[APPLICATION_KEY] as GalleryImagesApplication)
                 val galleryImagesRepository = application.container.galleryImagesRepository
-                val favoriteImagesRepository = application.container.favouriteImagesRepository
+                val favouriteImagesRepository = application.container.favouriteImagesRepository
                 GalleryViewModel(
                     galleryImagesRepository = galleryImagesRepository,
-                    favoriteImagesRepository = favoriteImagesRepository
+                    favouriteImagesRepository = favouriteImagesRepository
                 )
             }
         }

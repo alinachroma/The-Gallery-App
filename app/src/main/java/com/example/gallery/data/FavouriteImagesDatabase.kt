@@ -8,7 +8,7 @@ import com.example.gallery.model.FavouriteImage
 
 /**
  * Database class with a singleton Instance object.
- * Necessary to persist favorite images.
+ * Necessary to persist favourite images.
  */
 @Database(entities = [FavouriteImage::class], version = 1, exportSchema = false)
 abstract class FavouriteImagesDatabase: RoomDatabase() {

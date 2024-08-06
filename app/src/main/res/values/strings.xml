@@ -2,7 +2,7 @@
     <string name="app_name">Gallery</string>
     <string name="gallery_image">Gallery image</string>
     <string name="loading">Loading</string>
-    <string name="favorites">Favourites</string>
+    <string name="favourites">Favourites</string>
     <string name="loading_failed">Loading failed</string>
     <string name="retry">Retry</string>
 </resources>
